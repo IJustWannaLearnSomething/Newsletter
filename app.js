@@ -46,7 +46,7 @@ app.post('/' , ( req, res ) => {
   // https request for api call
   var request = https.request( url , options , (response) => {
     response.on( "data" , ( data ) => {
-      if(response.statusCode === 200 && JSON.parse(data).errors === [] ) {
+      if(response.statusCode === 200) {
         res.sendFile( __dirname + "/success.html" )
       } else {
         res.sendFile( __dirname + "/failure.html" )
