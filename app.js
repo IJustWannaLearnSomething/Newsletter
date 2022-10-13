@@ -46,7 +46,7 @@ app.post('/' , ( req, res ) => {
   // https request for api call
   var request = https.request( url , options , (response) => {
     response.on( "data" , ( data ) => {
-      if(response.statusCode === 200) {
+      if(response.statusCode === 200 && JSON.parse(data).errors === [] ) {
         res.sendFile( __dirname + "/success.html" )
       } else {
         res.sendFile( __dirname + "/failure.html" )
@@ -71,3 +71,6 @@ app.listen( process.env.PORT || 3000, ( req , res ) => {
 
 // API Key: 5769da0b77ad7334e91c674ba6770cc3-us21
 // Audience ID: 55bb12aca4
+// git commit -m "message"
+// heroku create
+// git push heroku master
